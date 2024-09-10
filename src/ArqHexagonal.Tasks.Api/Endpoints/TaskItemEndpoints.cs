@@ -7,33 +7,33 @@ public static class TaskItemEndpoints
 {
     public static RouteGroupBuilder MapTasksEnpoints(this RouteGroupBuilder group)
     {
-        group.MapGet("/tasks/{id}", GetTaskByIdAsync)
+        group.MapGet("{id}", GetTaskByIdAsync)
              .WithName("GetTaskById")
              .Produces<TaskItemDto>(StatusCodes.Status200OK)
              .Produces(StatusCodes.Status404NotFound);
 
-        group.MapGet("/tasks", ListTasksAsync)
+        group.MapGet("/", ListTasksAsync)
              .WithName("ListTasks")
              .Produces<List<TaskItemDto>>(StatusCodes.Status200OK);
 
-        group.MapPost("/tasks", AddAsync)
+        group.MapPost("/", AddAsync)
              .WithName("AddTask")
              .Accepts<TaskItemDto>("application/json")
              .Produces(StatusCodes.Status201Created)
              .Produces(StatusCodes.Status400BadRequest);
 
-        group.MapPut("/tasks", UpdateAsync)
+        group.MapPut("/", UpdateAsync)
              .WithName("UpdateTask")
              .Accepts<TaskItemDto>("application/json")
              .Produces(StatusCodes.Status204NoContent)
              .Produces(StatusCodes.Status400BadRequest);
 
-        group.MapPatch("/tasks/{id}/complete", CompleteAsync)
+        group.MapPatch("{id}/complete", CompleteAsync)
              .WithName("CompleteTask")
              .Produces(StatusCodes.Status204NoContent)
              .Produces(StatusCodes.Status400BadRequest);
 
-        group.MapDelete("/tasks/{id}", DeleteAsync)
+        group.MapDelete("{id}", DeleteAsync)
              .WithName("DeleteTask")
              .Produces(StatusCodes.Status204NoContent)
              .Produces(StatusCodes.Status400BadRequest);
