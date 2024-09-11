@@ -5,21 +5,22 @@ Exemplo de aplicação utilizando a Arquitetura Hexagonal (Portas e Adaptadores)
 ## Arquitetura
 A arquitetura do projeto é baseada no padrão Hexagonal, que divide a aplicação em diferentes camadas:
 
-#### Camada de Domínio:
+### Core:
+
+#### Domínio:
 
 Entidades: Representa as entidades do domínio (ex: Task).<br>
 Interfaces: Define contratos para os repositórios que manipulam as entidades (ex: ITaskRepository).
 
-#### Camada de Aplicação:
+#### Aplicação:
 
 Use Cases: Implementa a lógica de negócios utilizando interfaces definidas na camada de domínio (ex: ITaskService).<br>
 DTOs: Objetos de transferência de dados utilizados para comunicação entre a aplicação e os adaptadores (ex: TaskDto).
 
-#### Camada de Infraestrutura:
-
-Data: Implementações concretas dos repositórios definidos na camada de domínio (ex: TaskRepository).
-
 ### Adaptadores:
+
+#### Camada de Infraestrutura/Persistência:
+Data: Implementações concretas dos repositórios definidos na camada de domínio (ex: TaskRepository).
 
 #### CLI:
 Interface de linha de comando para interagir com a aplicação.
